@@ -1,6 +1,7 @@
 package com.opencv.springboot.controller;
 
 import com.opencv.springboot.entity.FaceEntity;
+import com.opencv.springboot.service.BalloonDetectionService;
 import com.opencv.springboot.service.FaceDetectionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class MainController {
     @Autowired
     private FaceDetectionService faceDetectionService;
 
+    @Autowired
+    private BalloonDetectionService balloonDetectionService;
+
 
     @ResponseBody
     @RequestMapping(value = "/faceDetect/image", method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
@@ -31,6 +35,8 @@ public class MainController {
        {
           return new byte[1];
        }
+
+        balloonDetectionService.detectGreenBlob(file);
 
         return faceDetectionService.detectFace(file).toImage();
     }

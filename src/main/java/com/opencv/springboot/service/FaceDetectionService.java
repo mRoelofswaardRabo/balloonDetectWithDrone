@@ -34,7 +34,7 @@ public class FaceDetectionService {
         CascadeClassifier faceDetector = new CascadeClassifier(faceResource.getFile().getAbsolutePath());
 
 
-        image = Imgcodecs.imdecode(new MatOfByte(file.getBytes()), Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+        image = Imgcodecs.imdecode(new MatOfByte(file.getBytes()), Imgcodecs.IMREAD_UNCHANGED);
         faceDetector.detectMultiScale(image, faceDetections);
 
         System.out.println(String.format("Detected %s faces", faceDetections.toArray().length));
