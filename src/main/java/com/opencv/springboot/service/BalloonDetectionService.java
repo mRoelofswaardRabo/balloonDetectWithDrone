@@ -61,7 +61,7 @@ public class BalloonDetectionService {
         Imgproc.GaussianBlur(imageFromFile, blurredImg, new Size(11, 11), 0);
 
         Mat hsvImg = new Mat();
-        Imgproc.cvtColor(imageFromFile, blurredImg, Imgproc.COLOR_BGR2HSV);
+        Imgproc.cvtColor(blurredImg, hsvImg, Imgproc.COLOR_BGR2HSV);
 
         return hsvImg;
     }
